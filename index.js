@@ -24,7 +24,9 @@ app.use(express.json());
 
 
 app.get("/", function(req, res, next) {
-  return res.send("Hello Nodejs");
+  return res.send("Hello Nodejs Server is ON .................");
+  // return res.redirect("/login");
+      
 });
 
 app.post("/login", async (req, res) => {
