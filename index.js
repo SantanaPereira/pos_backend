@@ -115,7 +115,7 @@ app.post("/register", async (req, res) => {
 app.get("/activation/:token", async (req, res) => {
   const token = req.params.token;
 
-console.log("\nTOKEN  =>\n "+token);
+console.log("\nindex.js backend linha:118  TOKEN  =>\n "+token);
 
   if (token) {
     jsonwebtoken.verify(token, "process.env.JWT_ACCOUNT_ACTIVATION", function(
@@ -135,7 +135,7 @@ console.log("\nTOKEN  =>\n "+token);
       { activated_token: token },
       updatedFields
     );
-    console.log("\n DOC => \n"+doc);
+    console.log("\nindex.js backend linha:138  DOC => \n"+doc);
     return res.redirect("http://localhost:3000/login/success");
   }
 });
