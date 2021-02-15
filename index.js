@@ -25,7 +25,6 @@ app.use(express.json());
 
 app.get("/", function(req, res, next) {
   return res.send("Hello Nodejs Server is ON .................");
-  // return res.redirect("/login");
       
 });
 
