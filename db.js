@@ -9,7 +9,8 @@ const options = {
   useFindAndModify: false // esta opção aparece devido ao metodo findOnAndUpdate()
 };
 
-mongoose.connect(process.env.CONECT_POSDB_MONGODB, options) 
+// mongoose.connect(process.env.CONECT_POSDB_MONGODB, options) 
+mongoose.connect(process.env.CONECT_ATLAS_MONGODB, options) 
 
 mongoose.connection.on('connected', function () {  
   console.log('Mongoose default connection open');
