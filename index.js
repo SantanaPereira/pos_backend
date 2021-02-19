@@ -78,7 +78,7 @@ app.post("/register", async (req, res) => {
       subject: `Account activation link`,
       html: `
           <h1>Please use the following link to activate your account</h1>
-          <p>localhost:8080/activation/${token}</p>
+          <p>${process.env.BACKEND_SERVER}/activation/${token}</p>
           <hr />
           <p>This email may contain sensetive information</p>
           <p>and link will  expired in 60 minutes</p>
@@ -123,9 +123,10 @@ console.log("\nindex.js backend linha:118  TOKEN  =>\n "+token);
     ) {
       if (err) {
         console.log("JWT VERIFY IN ACCOUNT ACTIVATION ERROR", err);
-        return res.redirect("http://localhost:3000/login/error");
+        return res.redirect(process.env.FRONTEND_SERVER+"/login/error");
       }
     });
+    
     let updatedFields = {
       status: "active",
       activated_token: ""
@@ -135,7 +136,7 @@ console.log("\nindex.js backend linha:118  TOKEN  =>\n "+token);
       updatedFields
     );
     console.log("\nindex.js backend linha:138  DOC => \n"+doc);
-    return res.redirect("http://localhost:3000/login/success");
+    return res.redirect(process.env.FRONTEND_SERVER+"/login/success");
   }
 });
 
@@ -217,7 +218,7 @@ app.post("/password/reset", async (req, res) => {
       subject: `Password Reset link`,
       html: `
                 <h1>Please use the following link to reset your password</h1>
-                <a href="http://localhost:3000/password/reset/${token}">Reset passord link</p>
+                <a href="${process.env.BACKEND_SERVER}password/reset/${token}">Reset passord link</p>
                 <hr />
                 <p>This link will expired in 60 minutes</p>
                 
