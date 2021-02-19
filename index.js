@@ -218,7 +218,7 @@ app.post("/password/reset", async (req, res) => {
       subject: `Password Reset link`,
       html: `
                 <h1>Please use the following link to reset your password</h1>
-                <a href="${process.env.BACKEND_SERVER}password/reset/${token}">Reset passord link</p>
+                <a href="${process.env.BACKEND_SERVER}/password/reset/${token}">Reset passord link</p>
                 <hr />
                 <p>This link will expired in 60 minutes</p>
                 
