@@ -23,7 +23,7 @@ app.use(express.json());
 // app.use("/api/v1", require("./api/api"));
 
 var allowedOrigins = ['http://localhost:3000',
-                      'https://amsp-pos.netlify.com'];
+                      'https://amsp-pos.netlify.app'];
 app.use(cors({
   origin: function(origin, callback){
     // allow requests with no origin 
