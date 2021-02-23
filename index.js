@@ -16,11 +16,28 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 require("./db");
 
 app.use(express.static(__dirname + "/uploaded"));
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());	
 // app.use("/api/v1", require("./api/api"));
+
+var allowedOrigins = ['http://localhost:3000',
+                      'https://amsp-pos.netlify.com'];
+app.use(cors({
+  origin: function(origin, callback){
+    // allow requests with no origin 
+    // (like mobile apps or curl requests)
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      var msg = 'The CORS policy for this site does not ' +
+                'allow access from the specified Origin.';
+      return res.json({status:'error',msg});
+    }
+    return callback(null, true);
+  }
+}));
+
 
 
 app.get("/", function(req, res, next) {
